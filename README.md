@@ -1,5 +1,5 @@
 # Cosmic Sort
-Cosmic sort is a parallel [bogosort](https://en.wikipedia.org/wiki/Bogosort) implementation that relies on cosmic solar rays to randomly flip bits in memory.
+Cosmic sort is a parallel [bogosort](https://en.wikipedia.org/wiki/Bogosort) implementation that relies on cosmic rays to randomly flip bits in memory.
 
 ## Features
 
