@@ -4,4 +4,4 @@ Cosmic sort is a parallel [bogosort](https://en.wikipedia.org/wiki/Bogosort) imp
 ## Features
 
 - Bit-Wise Parallellization: Every bit in memory has the same chance to be simultaneously flipped
-- Proper Output: Unlike traditional implementations, the output of the algorithm will never contain garbage as the algorithm keeps track of memory corruption and restores exceptional values to reflect the input distribution
+- Proper Output: Unlike traditional implementations (see for example [this one](https://github.com/cincottash/CosmicRaySort)), the output of the algorithm will never contain garbage as the algorithm keeps track of memory corruption and restores exceptional values to reflect the input distribution
