@@ -9,14 +9,14 @@ def cosmic_sort(a, *, redundancy: int = 1, simulate_corruption: bool = False):
 
     while True:
         if simulate_corruption:
-            a = corrupt_random_bits(a.copy())
+            corrupt_random_bits(a)
             for i in range(redundancy):
-                original_copies[i] = corrupt_random_bits(original_copies[i].copy())
+                corrupt_random_bits(original_copies[i])
 
         majority_freq_map = get_majority_freq_map(original_copies)
-        a = correct_to_frequency_map(a.copy(), majority_freq_map)
+        correct_to_frequency_map(a, majority_freq_map)
         for i in range(redundancy):
-            original_copies[i] = correct_to_frequency_map(original_copies[i].copy(), majority_freq_map)
+            correct_to_frequency_map(original_copies[i], majority_freq_map)
 
         if is_sorted(a):
             return a
@@ -53,7 +53,7 @@ def correct_to_frequency_map(l, majority_freqs):
             c_m -= 1
             c_x -= 1
     except StopIteration:
-        return l
+        pass
 
 
 def corrupt_random_bits(l):
@@ -62,7 +62,7 @@ def corrupt_random_bits(l):
         selector &= random.getrandbits(len(l))
 
     if selector < 0:
-        return l
+        return
 
     for i in range(math.ceil(math.log2(selector + 1))):
         if selector & (1 << i):
@@ -72,8 +72,6 @@ def corrupt_random_bits(l):
                 bits_to_flip &= random.getrandbits(bits_count)
             if bits_to_flip > 0:
                 l[i] ^= bits_to_flip
-
-    return l
 
 
 print(cosmic_sort([2, 1], redundancy=4, simulate_corruption=True))
